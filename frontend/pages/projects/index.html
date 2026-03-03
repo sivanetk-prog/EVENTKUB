@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>จัดการโปรเจกต์</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <nav>
+    <a href="../../index.html">หน้าแรก</a>
+    <a href="../users/">จัดการผู้ใช้</a>
+    <a href="../projects/">จัดการโปรเจกต์</a>
+    <a href="../tasks/">จัดการงาน</a>
+  </nav>
+
+  <div class="container">
+    <div class="header">จัดการโปรเจกต์</div>
+    <br>
+
+    <!-- Form สร้าง/แก้ไข project -->
+    <div id="form-section">
+      <div class="flex form-input">
+        <div class="header-form">ชื่อโปรเจกต์</div>
+        <input class="form" id="name" type="text" placeholder="ชื่อโปรเจกต์">
+      </div>
+      <div class="flex form-input">
+        <div class="header-form">รายละเอียด</div>
+        <input class="form" id="description" type="text" placeholder="รายละเอียด">
+      </div>
+      <div class="flex form-input">
+        <div class="header-form">เจ้าของ (user)</div>
+        <select id="user_id" class="form">
+          <option value="">-- เลือกผู้ใช้ --</option>
+        </select>
+      </div>
+      <div id="message" class="message"></div>
+      <div class="center">
+        <button onclick="submitData()" class="button" id="submit-btn">+ สร้างโปรเจกต์</button>
+        <button onclick="cancelEdit()" class="button danger" id="cancel-btn" style="display:none; margin-left:8px;">ยกเลิก</button>
+      </div>
+    </div>
+
+    <br>
+    <div id="projects"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="../../js/api.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>

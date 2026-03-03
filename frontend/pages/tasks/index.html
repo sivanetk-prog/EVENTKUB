@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>จัดการงาน</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body>
+  <nav>
+    <a href="../../index.html">หน้าแรก</a>
+    <a href="../users/">จัดการผู้ใช้</a>
+    <a href="../projects/">จัดการโปรเจกต์</a>
+    <a href="../tasks/">จัดการงาน</a>
+  </nav>
+
+  <div class="container">
+    <div class="header">จัดการงาน</div>
+    <br>
+
+    <!-- Form สร้าง/แก้ไข task -->
+    <div class="flex form-input">
+      <div class="header-form">ชื่องาน</div>
+      <input class="form" id="title" type="text" placeholder="ชื่องาน">
+    </div>
+    <div class="flex form-input">
+      <div class="header-form">รายละเอียด</div>
+      <input class="form" id="description" type="text" placeholder="รายละเอียด">
+    </div>
+    <div class="flex form-input">
+      <div class="header-form">สถานะ</div>
+      <select id="status" class="form">
+        <option value="todo">Todo</option>
+        <option value="in_progress">In Progress</option>
+        <option value="done">Done</option>
+      </select>
+    </div>
+    <div class="flex form-input">
+      <div class="header-form">โปรเจกต์</div>
+      <select id="project_id" class="form">
+        <option value="">-- เลือกโปรเจกต์ --</option>
+      </select>
+    </div>
+    <div class="flex form-input">
+      <div class="header-form">ผู้รับผิดชอบ</div>
+      <select id="assigned_user_id" class="form">
+        <option value="">-- ไม่ระบุ --</option>
+      </select>
+    </div>
+
+    <div id="message" class="message"></div>
+    <div class="center">
+      <button onclick="submitData()" class="button" id="submit-btn">+ สร้างงาน</button>
+      <button onclick="cancelEdit()" class="button danger" id="cancel-btn" style="display:none; margin-left:8px;">ยกเลิก</button>
+    </div>
+
+    <br>
+    <div id="tasks"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="../../js/api.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>

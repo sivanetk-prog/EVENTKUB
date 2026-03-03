@@ -1,8 +1,6 @@
-/* สิ่งที่อยู่ตรงนี้ จะมีไว้แค่ให้ dev อ่าน */
-/* 1. แต่งใคร ? (id, class, DOM) 2. แต่งอะไร ? */
 @font-face {
   font-family: "kanit";
-  src: url("./Kanit/Kanit-Regular.ttf");
+  src: url("../fonts/Kanit/Kanit-Regular.ttf");
 }
 
 body {
@@ -52,12 +50,17 @@ textarea {
   height: 40px;
   background-color: #2962ff;
   color: white;
+  cursor: pointer;
+}
+
+.button.danger {
+  background-color: #d32f2f;
 }
 
 .message {
   background-color: lightgray;
   padding: 10px;
-  margin-button: 10px;
+  margin-bottom: 10px;
   display: none;
 }
 
@@ -71,11 +74,56 @@ textarea {
   display: block;
 }
 
+/* Nav */
+nav {
+  background-color: #1a237e;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #e8eaf6;
+}
+
+/* Status badge */
+.badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.badge.todo { background-color: #e0e0e0; }
+.badge.in_progress { background-color: #fff9c4; }
+.badge.done { background-color: #c8e6c9; }
+
 @media screen and (max-width: 768px) {
   .flex {
     flex-direction: column;
   }
-  .header{
+  .header {
     font-size: 24px;
   }
   .button {

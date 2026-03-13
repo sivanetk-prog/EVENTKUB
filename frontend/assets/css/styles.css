@@ -406,6 +406,13 @@ input[type="checkbox"] {
   align-items: center;
 }
 
+.btn-row .button,
+.btn-row a {
+  flex: 1;
+  text-align: center;
+  justify-content: center;
+}
+
 /* Legacy support */
 .button.danger { background-color: var(--danger); color: #fff; }
 

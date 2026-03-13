@@ -8,23 +8,32 @@
 </head>
 <body>
   <nav>
-    <a href="./index.html">หน้าแรก</a>
-    <a href="./pages/users/">จัดการผู้ใช้</a>
-    <a href="./pages/projects/">จัดการโปรเจกต์</a>
-    <a href="./pages/tasks/">จัดการงาน</a>
+    <a href="./index.html" class="active">หน้าแรก</a>
+    <a href="./pages/users/">ผู้ใช้</a>
+    <a href="./pages/projects/">โปรเจกต์</a>
+    <a href="./pages/tasks/">งาน</a>
   </nav>
 
-  <div class="container">
-    <div class="header">Task Management System</div>
-    <br>
-    <div style="text-align:center;">
-      <p>ระบบจัดการงานสำหรับทีม</p>
-      <br>
-      <a href="./pages/users/"><button class="button">จัดการผู้ใช้</button></a>
-      <br><br>
-      <a href="./pages/projects/"><button class="button">จัดการโปรเจกต์</button></a>
-      <br><br>
-      <a href="./pages/tasks/"><button class="button">จัดการงาน</button></a>
+  <div class="hero">
+    <div class="hero-title">Task Management</div>
+    <div class="hero-sub">ระบบจัดการงานสำหรับทีม</div>
+
+    <div class="hero-cards">
+      <a href="./pages/users/" class="hero-card">
+        <div class="hero-card-icon">👤</div>
+        <div class="hero-card-label">จัดการผู้ใช้</div>
+        <div class="hero-card-desc">เพิ่ม ดู แก้ไขข้อมูลสมาชิก</div>
+      </a>
+      <a href="./pages/projects/" class="hero-card">
+        <div class="hero-card-icon">📁</div>
+        <div class="hero-card-label">จัดการโปรเจกต์</div>
+        <div class="hero-card-desc">สร้างและติดตามโปรเจกต์</div>
+      </a>
+      <a href="./pages/tasks/" class="hero-card">
+        <div class="hero-card-icon">✅</div>
+        <div class="hero-card-label">จัดการงาน</div>
+        <div class="hero-card-desc">มอบหมายและติดตามงาน</div>
+      </a>
     </div>
   </div>
 </body>

@@ -9,39 +9,43 @@
 <body>
   <nav>
     <a href="../../index.html">หน้าแรก</a>
-    <a href="../users/">จัดการผู้ใช้</a>
-    <a href="../projects/">จัดการโปรเจกต์</a>
-    <a href="../tasks/">จัดการงาน</a>
+    <a href="../users/">ผู้ใช้</a>
+    <a href="../projects/" class="active">โปรเจกต์</a>
+    <a href="../tasks/">งาน</a>
   </nav>
 
   <div class="container">
-    <div class="header">จัดการโปรเจกต์</div>
-    <br>
+    <div class="page-header">
+      <div class="page-title">โปรเจกต์</div>
+    </div>
 
-    <!-- Form สร้าง/แก้ไข project -->
-    <div id="form-section">
-      <div class="flex form-input">
-        <div class="header-form">ชื่อโปรเจกต์</div>
+    <div class="form-card" id="form-section">
+      <div class="section-label">สร้าง / แก้ไขโปรเจกต์</div>
+
+      <div class="form-row">
+        <label class="form-label">ชื่อโปรเจกต์</label>
         <input class="form" id="name" type="text" placeholder="ชื่อโปรเจกต์">
       </div>
-      <div class="flex form-input">
-        <div class="header-form">รายละเอียด</div>
-        <input class="form" id="description" type="text" placeholder="รายละเอียด">
+      <div class="form-row">
+        <label class="form-label">รายละเอียด</label>
+        <input class="form" id="description" type="text" placeholder="รายละเอียดโปรเจกต์">
       </div>
-      <div class="flex form-input">
-        <div class="header-form">เจ้าของ (user)</div>
+      <div class="form-row">
+        <label class="form-label">เจ้าของโปรเจกต์</label>
         <select id="user_id" class="form">
-          <option value="">-- เลือกผู้ใช้ --</option>
+          <option value="">— เลือกผู้ใช้ —</option>
         </select>
       </div>
+
       <div id="message" class="message"></div>
-      <div class="center">
-        <button onclick="submitData()" class="button" id="submit-btn">+ สร้างโปรเจกต์</button>
-        <button onclick="cancelEdit()" class="button danger" id="cancel-btn" style="display:none; margin-left:8px;">ยกเลิก</button>
+
+      <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:8px;">
+        <button onclick="cancelEdit()" class="button button-secondary" id="cancel-btn" style="display:none;">ยกเลิก</button>
+        <button onclick="submitData()" class="button button-primary" id="submit-btn">+ สร้างโปรเจกต์</button>
       </div>
     </div>
 
-    <br>
+    <div class="section-label">รายการโปรเจกต์</div>
     <div id="projects"></div>
   </div>
 

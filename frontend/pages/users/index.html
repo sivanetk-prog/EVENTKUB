@@ -9,16 +9,20 @@
 <body>
   <nav>
     <a href="../../index.html">หน้าแรก</a>
-    <a href="../users/">จัดการผู้ใช้</a>
-    <a href="../projects/">จัดการโปรเจกต์</a>
-    <a href="../tasks/">จัดการงาน</a>
+    <a href="../users/" class="active">ผู้ใช้</a>
+    <a href="../projects/">โปรเจกต์</a>
+    <a href="../tasks/">งาน</a>
   </nav>
 
   <div class="container">
-    <div class="header">จัดการผู้ใช้</div>
-    <br>
-    <a href="../register/"><button class="button">+ เพิ่มผู้ใช้ใหม่</button></a>
-    <br><br>
+    <div class="page-header">
+      <div class="page-title">ผู้ใช้</div>
+      <a href="../register/">
+        <button class="button button-primary">+ เพิ่มผู้ใช้ใหม่</button>
+      </a>
+    </div>
+
+    <div class="section-label">รายชื่อสมาชิก</div>
     <div id="user"></div>
   </div>
 

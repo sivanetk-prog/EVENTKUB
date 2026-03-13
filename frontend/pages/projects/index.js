@@ -26,19 +26,19 @@ const loadData = async () => {
     const response = await api.projects.getAll()
     const projects = response.data
 
-    let html = '<table><thead><tr><th>ID</th><th>ชื่อโปรเจกต์</th><th>เจ้าของ</th><th>จัดการ</th></tr></thead><tbody>'
+    let html = '<div class="form-card" style="padding:0;overflow:hidden;"><table><thead><tr><th>ID</th><th>ชื่อโปรเจกต์</th><th>เจ้าของ</th><th>จัดการ</th></tr></thead><tbody>'
     for (const p of projects) {
       html += `<tr>
         <td>${p.id}</td>
         <td>${p.name}<br><small>${p.description || ''}</small></td>
         <td>${p.firstname} ${p.lastname}</td>
         <td>
-          <button class="edit" data-id="${p.id}" data-name="${p.name}" data-desc="${p.description || ''}">แก้ไข</button>
-          <button class="delete" data-id="${p.id}">ลบ</button>
+          <button class="button button-secondary edit" data-id="${p.id}" data-name="${p.name}" data-desc="${p.description || ''}">แก้ไข</button>
+          <button class="button button-danger delete" data-id="${p.id}">ลบ</button>
         </td>
       </tr>`
     }
-    html += '</tbody></table>'
+    html += '</tbody></table></div>'
     document.getElementById('projects').innerHTML = html
 
     document.querySelectorAll('.edit').forEach(btn => {

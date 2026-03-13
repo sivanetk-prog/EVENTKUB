@@ -3,54 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ลงทะเบียนผู้ใช้</title>
+  <title>เพิ่มผู้ใช้ใหม่</title>
   <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
   <nav>
     <a href="../../index.html">หน้าแรก</a>
-    <a href="../users/">จัดการผู้ใช้</a>
-    <a href="../projects/">จัดการโปรเจกต์</a>
-    <a href="../tasks/">จัดการงาน</a>
+    <a href="../users/">ผู้ใช้</a>
+    <a href="../projects/">โปรเจกต์</a>
+    <a href="../tasks/">งาน</a>
   </nav>
 
   <div class="container">
-    <div class="header form-input">Register form</div>
+    <div class="page-header">
+      <div class="page-title">เพิ่มผู้ใช้ใหม่</div>
+      <a href="../users/">
+        <button class="button button-secondary">← กลับ</button>
+      </a>
+    </div>
 
-    <div class="flex form-input">
-      <div class="header-form">ชื่อจริง</div>
-      <input class="form" name="firstname" type="text">
-    </div>
-    <div class="flex form-input">
-      <div class="header-form">นามสกุล</div>
-      <input class="form" name="lastname" type="text">
-    </div>
-    <div class="flex form-input">
-      <div class="header-form">อายุ</div>
-      <input class="form" name="age" type="number" min="0" max="100">
-    </div>
-    <div class="flex gender form-input">
-      <div class="header-form">เพศ</div>
-      <div class="flex">
-        <div><input name="gender" type="radio" value="ชาย"> ชาย</div>
-        <div><input name="gender" type="radio" value="หญิง"> หญิง</div>
-        <div><input name="gender" type="radio" value="ไม่ระบุ"> ไม่ระบุ</div>
+    <div class="form-card">
+      <div class="form-row">
+        <label class="form-label">ชื่อจริง</label>
+        <input class="form" name="firstname" type="text" placeholder="ชื่อจริง">
       </div>
-    </div>
-    <div class="form-input">
-      สิ่งที่สนใจ
-      <div><input name="interest" type="checkbox" value="หนังสือ"> หนังสือ</div>
-      <div><input name="interest" type="checkbox" value="วิดีโอเกม"> วิดีโอเกม</div>
-      <div><input name="interest" type="checkbox" value="การเมือง"> การเมือง</div>
-    </div>
-    <div class="form-input">
-      คำอธิบายตัวตนเพิ่มเติม
-      <div><textarea name="description"></textarea></div>
-    </div>
+      <div class="form-row">
+        <label class="form-label">นามสกุล</label>
+        <input class="form" name="lastname" type="text" placeholder="นามสกุล">
+      </div>
+      <div class="form-row">
+        <label class="form-label">อายุ</label>
+        <input class="form" name="age" type="number" min="0" max="100" placeholder="อายุ">
+      </div>
 
-    <div id="message" class="message"></div>
-    <div class="center">
-      <button onclick="submitData()" class="button">ส่งข้อมูล</button>
+      <div class="form-row">
+        <label class="form-label">เพศ</label>
+        <div class="radio-group">
+          <label><input name="gender" type="radio" value="ชาย"> ชาย</label>
+          <label><input name="gender" type="radio" value="หญิง"> หญิง</label>
+          <label><input name="gender" type="radio" value="ไม่ระบุ"> ไม่ระบุ</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">สิ่งที่สนใจ</label>
+        <div class="checkbox-group">
+          <label><input name="interest" type="checkbox" value="หนังสือ"> หนังสือ</label>
+          <label><input name="interest" type="checkbox" value="วิดีโอเกม"> วิดีโอเกม</label>
+          <label><input name="interest" type="checkbox" value="การเมือง"> การเมือง</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">คำอธิบายเพิ่มเติม</label>
+        <textarea name="description" placeholder="เล่าเกี่ยวกับตัวเองสักนิด..."></textarea>
+      </div>
+
+      <div id="message" class="message"></div>
+
+      <div style="display:flex; justify-content:flex-end; margin-top:8px;">
+        <button onclick="submitData()" class="button button-primary">ส่งข้อมูล</button>
+      </div>
     </div>
   </div>
 

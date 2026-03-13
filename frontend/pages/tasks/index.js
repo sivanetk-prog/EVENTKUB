@@ -43,7 +43,7 @@ const loadData = async () => {
     const response = await api.tasks.getAll()
     const tasks = response.data
 
-    let html = '<table><thead><tr><th>ID</th><th>งาน</th><th>โปรเจกต์</th><th>ผู้รับผิดชอบ</th><th>สถานะ</th><th>จัดการ</th></tr></thead><tbody>'
+    let html = '<div class="form-card" style="padding:0;overflow:hidden;"><table><thead><tr><th>ID</th><th>งาน</th><th>โปรเจกต์</th><th>ผู้รับผิดชอบ</th><th>สถานะ</th><th>จัดการ</th></tr></thead><tbody>'
     for (const t of tasks) {
       const assignee = t.assigned_firstname ? `${t.assigned_firstname} ${t.assigned_lastname}` : '-'
       html += `<tr>
@@ -53,18 +53,18 @@ const loadData = async () => {
         <td>${assignee}</td>
         <td><span class="badge ${t.status}">${statusLabel[t.status]}</span></td>
         <td>
-          <button class="edit"
+          <button class="button button-secondary edit"
             data-id="${t.id}"
             data-title="${t.title}"
             data-desc="${t.description || ''}"
             data-status="${t.status}"
             data-project="${t.project_id}"
             data-user="${t.assigned_user_id || ''}">แก้ไข</button>
-          <button class="delete" data-id="${t.id}">ลบ</button>
+          <button class="button button-danger delete" data-id="${t.id}">ลบ</button>
         </td>
       </tr>`
     }
-    html += '</tbody></table>'
+    html += '</tbody></table></div>'
     document.getElementById('tasks').innerHTML = html
 
     document.querySelectorAll('.edit').forEach(btn => {

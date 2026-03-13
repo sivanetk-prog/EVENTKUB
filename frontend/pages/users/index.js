@@ -7,7 +7,7 @@ const loadData = async () => {
     const response = await api.users.getAll()
     const users = response.data
 
-    let html = '<table><thead><tr><th>ID</th><th>ชื่อ</th><th>อายุ</th><th>เพศ</th><th>จัดการ</th></tr></thead><tbody>'
+    let html = '<div class="form-card" style="padding:0;overflow:hidden;"><table><thead><tr><th>ID</th><th>ชื่อ</th><th>อายุ</th><th>เพศ</th><th>จัดการ</th></tr></thead><tbody>'
     for (const user of users) {
       html += `<tr>
         <td>${user.id}</td>
@@ -15,12 +15,12 @@ const loadData = async () => {
         <td>${user.age}</td>
         <td>${user.gender}</td>
         <td>
-          <a href="../register/?id=${user.id}"><button>แก้ไข</button></a>
-          <button class="delete" data-id="${user.id}">ลบ</button>
+          <a href="../register/?id=${user.id}"><button class="button button-secondary">แก้ไข</button></a>
+          <button class="button button-danger delete" data-id="${user.id}">ลบ</button>
         </td>
       </tr>`
     }
-    html += '</tbody></table>'
+    html += '</tbody></table></div>'
 
     document.getElementById('user').innerHTML = html
 

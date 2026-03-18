@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครสมาชิก - EventHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h1>EventHub</h1>
+            <p style="text-align: center; color: #6e6e73; margin-bottom: 40px;">สร้างบัญชีผู้ใช้และบันทึกลงฐานข้อมูล</p>
+
+            <form id="register-form">
+                <input type="text" id="user_name" placeholder="ชื่อผู้ใช้" required>
+                <input type="email" id="user_email" placeholder="อีเมลผู้ใช้" required autocomplete="username">
+                <input type="text" id="user_phone" placeholder="เบอร์โทรศัพท์ (optional)">
+                <input type="password" id="user_password" placeholder="รหัสผ่าน" required autocomplete="new-password">
+                <button type="submit" class="btn primary">สมัครสมาชิก</button>
+            </form>
+
+            <div style="text-align: center; margin-top: 24px;">
+                <p style="color: #6e6e73;">
+                    มีบัญชีแล้ว?
+                    <a href="login.html" style="color: #0071e3; text-decoration: none;">เข้าสู่ระบบ</a>
+                </p>
+                <p style="margin-top: 12px;">
+                    <a href="index.html" style="color: #0071e3; text-decoration: none;">กลับไปหน้าหลัก</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/dialog.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>

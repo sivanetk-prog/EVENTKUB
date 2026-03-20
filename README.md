@@ -1,107 +1,39 @@
-# web101 — Task Management System
+# web101 - Event Management System
 
-ระบบจัดการโปรเจกต์และ Task สำหรับทีม สร้างด้วย Node.js + Express + MySQL ฝั่ง Backend และ HTML/CSS/JS ฝั่ง Frontend
+ระบบจัดการกิจกรรม/อีเวนต์แบบพื้นฐาน สร้างด้วย Node.js + Express + MySQL และหน้าเว็บ HTML/CSS/JS แบบตรงไปตรงมา
 
----
+## ความสามารถหลัก
 
-## โครงสร้างโปรเจกต์
+- สร้างกิจกรรมและกำหนดจำนวนผู้เข้าร่วมสูงสุด
+- จัดการข้อมูลผู้ใช้ในระบบ
+- ให้ผู้ใช้ลงทะเบียนเข้าร่วมกิจกรรม
+- แสดงรายชื่อผู้เข้าร่วมทั้งหมดของแต่ละกิจกรรม
 
-```
+## โครงสร้างโปรเจค
+
+```text
 web101/
-├── database/          SQL schema และ seed data
-├── frontend/          หน้าเว็บ (Vanilla HTML/CSS/JS)
-└── server/            REST API (Node.js + Express)
+|-- database/   schema และ seed สำหรับ MySQL
+|-- frontend/   หน้าเว็บแบบ Vanilla HTML/CSS/JS
+`-- server/     REST API ด้วย Node.js + Express
 ```
 
----
+## วิธีรัน
 
-## เทคโนโลยีที่ใช้
+1. รัน MySQL จาก `server/docker-compose.yml`
+2. import ไฟล์ `database/schema.sql`
+3. ติดตั้งแพ็กเกจในโฟลเดอร์ `server`
+4. รัน `node index.js`
+5. เปิด `frontend/index.html`
 
-| ส่วน | เทคโนโลยี |
-|------|-----------|
-| Backend | Node.js, Express 4 |
-| Database | MySQL (via mysql2) |
-| Frontend | HTML, CSS, Vanilla JS |
-| Font | Kanit (Google Fonts) |
-| Dev tool | nodemon |
+## API หลัก
 
----
-
-## การติดตั้งและรัน
-
-### 1. เตรียมฐานข้อมูล
-
-รัน Docker สำหรับ MySQL:
-
-```bash
-cd server
-docker-compose up -d
-```
-
-จากนั้น import schema และ seed data:
-
-```bash
-mysql -h 127.0.0.1 -P 8820 -u root -proot webdb < database/schema.sql
-```
-
-### 2. ตั้งค่า Environment
-
-```bash
-cd server
-cp .env.example .env
-```
-
-แก้ไขค่าใน `.env` ให้ตรงกับ environment ของคุณ:
-
-```env
-DB_HOST=localhost
-DB_PORT=8820
-DB_USER=root
-DB_PASS=root
-DB_NAME=webdb
-PORT=8000
-```
-
-### 3. ติดตั้ง Dependencies
-
-```bash
-cd server
-npm install
-```
-
-### 4. รัน Server
-
-```bash
-cd server
-node index.js
-```
-
-Server จะรันที่ `http://localhost:8000`
-
-### 5. เปิด Frontend
-
-เปิดไฟล์ `frontend/index.html` ผ่าน browser หรือใช้ Live Server extension
-
----
-
-## API Endpoints สรุป
-
-| Method | Path | คำอธิบาย |
-|--------|------|----------|
-| GET | /users | ดูผู้ใช้ทั้งหมด |
-| POST | /users | สร้างผู้ใช้ใหม่ |
-| GET | /projects | ดูโปรเจกต์ทั้งหมด |
-| POST | /projects | สร้างโปรเจกต์ใหม่ |
-| GET | /tasks | ดู task ทั้งหมด |
-| POST | /tasks | สร้าง task ใหม่ |
-| POST | /tasks/:id/tags | เพิ่ม tag ให้ task |
-
-ดู API Docs เพิ่มเติมได้ที่ [docs/api.md](docs/api.md)
-
----
-
-## เอกสารเพิ่มเติม
-
-- [API Documentation](docs/api.md)
-- [Database Schema](docs/database.md)
-- [Code Guide](docs/code-guide.md)
+- `GET /users`
+- `POST /users`
+- `GET /events`
+- `POST /events`
+- `PUT /events/:id`
+- `DELETE /events/:id`
+- `GET /registrations`
+- `POST /registrations`
+- `DELETE /registrations/:id`

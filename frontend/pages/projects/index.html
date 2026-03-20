@@ -3,54 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>จัดการโปรเจกต์</title>
+  <title>จัดการกิจกรรม</title>
   <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
   <nav>
     <a href="../../index.html">หน้าแรก</a>
     <a href="../users/">ผู้ใช้</a>
-    <a href="../projects/" class="active">โปรเจกต์</a>
-    <a href="../tasks/">งาน</a>
+    <a href="../projects/" class="active">กิจกรรม</a>
+    <a href="../tasks/">ลงทะเบียน</a>
   </nav>
 
-  <div class="container">
-    <div class="page-header">
-      <div class="page-title">โปรเจกต์</div>
-    </div>
-
-    <div class="form-card" id="form-section">
-      <div class="section-label">สร้าง / แก้ไขโปรเจกต์</div>
-
-      <div class="form-row">
-        <label class="form-label">ชื่อโปรเจกต์</label>
-        <input class="form" id="name" type="text" placeholder="ชื่อโปรเจกต์">
+  <main class="container">
+    <section class="page-header">
+      <div class="page-intro">
+        <h1 class="page-title">กิจกรรม</h1>
+        <p class="page-subtitle">สร้างและดูแลกิจกรรมทั้งหมดในรูปแบบที่สะอาดและใช้งานง่าย</p>
       </div>
-      <div class="form-row">
-        <label class="form-label">รายละเอียด</label>
-        <input class="form" id="description" type="text" placeholder="รายละเอียดโปรเจกต์">
-      </div>
-      <div class="form-row">
-        <label class="form-label">เจ้าของโปรเจกต์</label>
-        <select id="user_id" class="form">
-          <option value="">— เลือกผู้ใช้ —</option>
-        </select>
+    </section>
+
+    <section class="glass-banner">
+      <div class="glass-banner-title">Create New Event</div>
+      <div class="glass-banner-text">ระบุชื่อกิจกรรม รายละเอียด สถานที่ วันที่ และจำนวนผู้เข้าร่วมสูงสุด</div>
+    </section>
+
+    <section class="form-card" id="form-section">
+      <div class="section-label">สร้าง / แก้ไขกิจกรรม</div>
+
+      <div class="form-grid">
+        <div class="form-row full">
+          <label class="form-label">ชื่อกิจกรรม</label>
+          <input class="form" id="name" type="text" placeholder="ชื่อกิจกรรม">
+        </div>
+        <div class="form-row full">
+          <label class="form-label">รายละเอียด</label>
+          <textarea id="description" placeholder="รายละเอียดกิจกรรม"></textarea>
+        </div>
+        <div class="form-row">
+          <label class="form-label">สถานที่</label>
+          <input class="form" id="location" type="text" placeholder="สถานที่จัดกิจกรรม">
+        </div>
+        <div class="form-row">
+          <label class="form-label">วันที่จัดกิจกรรม</label>
+          <input class="form" id="event_date" type="date">
+        </div>
+        <div class="form-row">
+          <label class="form-label">จำนวนที่รับ</label>
+          <input class="form" id="max_participants" type="number" min="1" placeholder="จำนวนผู้เข้าร่วมสูงสุด">
+        </div>
+        <div class="form-row">
+          <label class="form-label">ผู้สร้างกิจกรรม</label>
+          <select id="created_by" class="form">
+            <option value="">-- เลือกผู้ใช้ --</option>
+          </select>
+        </div>
       </div>
 
       <div id="message" class="message"></div>
 
       <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:8px;">
         <button onclick="cancelEdit()" class="button button-secondary" id="cancel-btn" style="display:none;">ยกเลิก</button>
-        <button onclick="submitData()" class="button button-primary" id="submit-btn">+ สร้างโปรเจกต์</button>
+        <button onclick="submitData()" class="button button-primary" id="submit-btn">+ สร้างกิจกรรม</button>
       </div>
-    </div>
+    </section>
 
-    <div class="section-label">รายการโปรเจกต์</div>
-    <div id="projects"></div>
-  </div>
+    <section>
+      <div class="section-label">รายการกิจกรรม</div>
+      <div id="projects"></div>
+    </section>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   <script src="../../js/api.js"></script>
+  <script src="../../js/ui.js"></script>
   <script src="./index.js"></script>
 </body>
 </html>

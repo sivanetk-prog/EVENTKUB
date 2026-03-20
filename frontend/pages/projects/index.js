@@ -9,7 +9,9 @@ window.onload = async () => {
 const loadUsers = async () => {
   try {
     const response = await api.users.getAll()
-    const select = document.getElementById('user_id')
+    const select = document.getElementById('created_by')
+    select.innerHTML = '<option value="">-- เลือกผู้ใช้ --</option>'
+
     response.data.forEach(user => {
       const option = document.createElement('option')
       option.value = user.id
@@ -23,19 +25,28 @@ const loadUsers = async () => {
 
 const loadData = async () => {
   try {
-    const response = await api.projects.getAll()
-    const projects = response.data
+    const response = await api.events.getAll()
+    const events = response.data
 
-    let html = '<div class="form-card" style="padding:0;overflow:hidden;"><table><thead><tr><th>ID</th><th>ชื่อโปรเจกต์</th><th>เจ้าของ</th><th>จัดการ</th></tr></thead><tbody>'
-    for (const p of projects) {
+    let html = '<div class="form-card" style="padding:0;overflow:hidden;"><table><thead><tr><th>ID</th><th>กิจกรรม</th><th>วัน / สถานที่</th><th>จำนวน</th><th>ผู้สร้าง</th><th>จัดการ</th></tr></thead><tbody>'
+    for (const event of events) {
       html += `<tr>
-        <td>${p.id}</td>
-        <td>${p.name}<br><small>${p.description || ''}</small></td>
-        <td>${p.firstname} ${p.lastname}</td>
+        <td>${event.id}</td>
+        <td>${event.name}<br><small>${event.description || ''}</small></td>
+        <td>${event.event_date}<br><small>${event.location}</small></td>
+        <td>${event.registered_count}/${event.max_participants}</td>
+        <td>${event.firstname} ${event.lastname}</td>
         <td>
           <div class="btn-row">
-            <button class="button button-outline-edit edit" data-id="${p.id}" data-name="${p.name}" data-desc="${p.description || ''}">✏️ แก้ไข</button>
-            <button class="button button-outline-danger delete" data-id="${p.id}">🗑️ ลบ</button>
+            <button class="button button-outline-edit edit"
+              data-id="${event.id}"
+              data-name="${event.name}"
+              data-description="${event.description || ''}"
+              data-location="${event.location}"
+              data-event-date="${event.event_date}"
+              data-max-participants="${event.max_participants}"
+              data-created-by="${event.created_by}">แก้ไข</button>
+            <button class="button button-outline-danger delete" data-id="${event.id}">ลบ</button>
           </div>
         </td>
       </tr>`
@@ -45,11 +56,15 @@ const loadData = async () => {
 
     document.querySelectorAll('.edit').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        const { id, name, desc } = e.target.dataset
+        const d = e.target.dataset
         mode = 'EDIT'
-        selectedId = id
-        document.getElementById('name').value = name
-        document.getElementById('description').value = desc
+        selectedId = d.id
+        document.getElementById('name').value = d.name
+        document.getElementById('description').value = d.description
+        document.getElementById('location').value = d.location
+        document.getElementById('event_date').value = d.eventDate
+        document.getElementById('max_participants').value = d.maxParticipants
+        document.getElementById('created_by').value = d.createdBy
         document.getElementById('submit-btn').textContent = 'บันทึกการแก้ไข'
         document.getElementById('cancel-btn').style.display = 'inline-block'
       })
@@ -57,9 +72,11 @@ const loadData = async () => {
 
     document.querySelectorAll('.delete').forEach(btn => {
       btn.addEventListener('click', async (e) => {
-        if (!confirm('ยืนยันการลบ?')) return
+        const confirmed = await appConfirm('ยืนยันการลบกิจกรรม?', { title: 'ลบกิจกรรม' })
+        if (!confirmed) return
+
         try {
-          await api.projects.remove(e.target.dataset.id)
+          await api.events.remove(e.target.dataset.id)
           await loadData()
         } catch (error) {
           console.log(error)
@@ -76,39 +93,50 @@ const submitData = async () => {
   const data = {
     name: document.getElementById('name').value,
     description: document.getElementById('description').value,
-    user_id: document.getElementById('user_id').value
+    location: document.getElementById('location').value,
+    event_date: document.getElementById('event_date').value,
+    max_participants: document.getElementById('max_participants').value,
+    created_by: document.getElementById('created_by').value
   }
 
   try {
     if (mode === 'CREATE') {
-      await api.projects.create(data)
-      messageDOM.innerText = 'สร้างโปรเจกต์สำเร็จ!'
+      await api.events.create(data)
+      messageDOM.innerText = 'สร้างกิจกรรมสำเร็จ!'
     } else {
-      await api.projects.update(selectedId, data)
-      messageDOM.innerText = 'แก้ไขโปรเจกต์สำเร็จ!'
+      await api.events.update(selectedId, data)
+      messageDOM.innerText = 'แก้ไขกิจกรรมสำเร็จ!'
       cancelEdit()
     }
+
     messageDOM.className = 'message success'
-    document.getElementById('name').value = ''
-    document.getElementById('description').value = ''
+    clearForm()
     await loadData()
   } catch (error) {
     const msg = error.response?.data?.message || error.message
     const errors = error.response?.data?.errors || []
     let html = `<div>${msg}</div><ul>`
-    errors.forEach(e => { html += `<li>${e}</li>` })
+    errors.forEach(item => { html += `<li>${item}</li>` })
     html += '</ul>'
     messageDOM.innerHTML = html
     messageDOM.className = 'message danger'
   }
 }
 
+const clearForm = () => {
+  document.getElementById('name').value = ''
+  document.getElementById('description').value = ''
+  document.getElementById('location').value = ''
+  document.getElementById('event_date').value = ''
+  document.getElementById('max_participants').value = ''
+  document.getElementById('created_by').value = ''
+}
+
 const cancelEdit = () => {
   mode = 'CREATE'
   selectedId = ''
-  document.getElementById('name').value = ''
-  document.getElementById('description').value = ''
-  document.getElementById('submit-btn').textContent = '+ สร้างโปรเจกต์'
+  clearForm()
+  document.getElementById('submit-btn').textContent = '+ สร้างกิจกรรม'
   document.getElementById('cancel-btn').style.display = 'none'
   document.getElementById('message').className = 'message'
 }

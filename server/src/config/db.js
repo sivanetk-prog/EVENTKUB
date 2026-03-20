@@ -5,11 +5,11 @@ let conn = null
 const getConnection = async () => {
   if (!conn) {
     conn = await mysql.createConnection({
-      host: process.env.DB_HOST || 'localhost',
+      host: process.env.DB_HOST || '127.0.0.1',
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASS || 'root',
-      database: process.env.DB_NAME || 'webdb',
-      port: parseInt(process.env.DB_PORT) || 8820
+      database: process.env.DB_NAME || 'event_db',
+      port: parseInt(process.env.DB_PORT, 10) || 3300
     })
   }
   return conn

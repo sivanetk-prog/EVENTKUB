@@ -10,24 +10,35 @@
   <nav>
     <a href="../../index.html">หน้าแรก</a>
     <a href="../users/" class="active">ผู้ใช้</a>
-    <a href="../projects/">โปรเจกต์</a>
-    <a href="../tasks/">งาน</a>
+    <a href="../projects/">กิจกรรม</a>
+    <a href="../tasks/">ลงทะเบียน</a>
   </nav>
 
-  <div class="container">
-    <div class="page-header">
-      <div class="page-title">ผู้ใช้</div>
+  <main class="container">
+    <section class="page-header">
+      <div class="page-intro">
+        <h1 class="page-title">ผู้ใช้</h1>
+        <p class="page-subtitle">จัดการรายชื่อผู้ใช้ที่สามารถลงทะเบียนเข้าร่วมกิจกรรมในระบบ</p>
+      </div>
       <a href="../register/">
         <button class="button button-primary">+ เพิ่มผู้ใช้ใหม่</button>
       </a>
-    </div>
+    </section>
 
-    <div class="section-label">รายชื่อสมาชิก</div>
-    <div id="user"></div>
-  </div>
+    <section class="glass-banner">
+      <div class="glass-banner-title">User Directory</div>
+      <div class="glass-banner-text">รายการนี้ใช้เป็นฐานข้อมูลผู้เข้าร่วมสำหรับทุกกิจกรรมที่สร้างในระบบ</div>
+    </section>
+
+    <section>
+      <div class="section-label">รายชื่อผู้ใช้ในระบบ</div>
+      <div id="user"></div>
+    </section>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   <script src="../../js/api.js"></script>
+  <script src="../../js/ui.js"></script>
   <script src="./index.js"></script>
 </body>
 </html>

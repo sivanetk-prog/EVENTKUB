@@ -8,6 +8,8 @@ window.onload = async () => {
   if (id) {
     mode = 'EDIT'
     selectedId = id
+    document.querySelector('.page-title').textContent = 'แก้ไขผู้ใช้'
+
     try {
       const response = await api.users.getById(id)
       const user = response.data
@@ -20,6 +22,7 @@ window.onload = async () => {
       document.querySelectorAll('input[name=gender]').forEach(el => {
         if (el.value === user.gender) el.checked = true
       })
+
       document.querySelectorAll('input[name=interest]').forEach(el => {
         if (user.interests.includes(el.value)) el.checked = true
       })
@@ -58,8 +61,9 @@ const submitData = async () => {
       error.message = error.response.data.message
       error.errors = error.response.data.errors
     }
+
     let html = `<div>${error.message}</div><ul>`
-    ;(error.errors || []).forEach(e => { html += `<li>${e}</li>` })
+    ;(error.errors || []).forEach(item => { html += `<li>${item}</li>` })
     html += '</ul>'
     messageDOM.innerHTML = html
     messageDOM.className = 'message danger'

@@ -3,68 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>จัดการงาน</title>
+  <title>ลงทะเบียนเข้าร่วมกิจกรรม</title>
   <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
   <nav>
     <a href="../../index.html">หน้าแรก</a>
     <a href="../users/">ผู้ใช้</a>
-    <a href="../projects/">โปรเจกต์</a>
-    <a href="../tasks/" class="active">งาน</a>
+    <a href="../projects/">กิจกรรม</a>
+    <a href="../tasks/" class="active">ลงทะเบียน</a>
   </nav>
 
-  <div class="container">
-    <div class="page-header">
-      <div class="page-title">งาน</div>
-    </div>
+  <main class="container">
+    <section class="page-header">
+      <div class="page-intro">
+        <h1 class="page-title">ลงทะเบียนเข้าร่วม</h1>
+        <p class="page-subtitle">จับคู่ผู้ใช้กับกิจกรรม และดูรายชื่อผู้เข้าร่วมทั้งหมดแบบสด ๆ</p>
+      </div>
+    </section>
 
-    <div class="form-card">
-      <div class="section-label">สร้าง / แก้ไขงาน</div>
+    <section class="glass-banner">
+      <div class="glass-banner-title">Registration Flow</div>
+      <div class="glass-banner-text">เลือกกิจกรรมและผู้ใช้เพื่อบันทึกการลงทะเบียน แล้วติดตามรายชื่อผู้เข้าร่วมด้านล่าง</div>
+    </section>
 
-      <div class="form-row">
-        <label class="form-label">ชื่องาน</label>
-        <input class="form" id="title" type="text" placeholder="ชื่องาน">
-      </div>
-      <div class="form-row">
-        <label class="form-label">รายละเอียด</label>
-        <input class="form" id="description" type="text" placeholder="รายละเอียด">
-      </div>
-      <div class="form-row">
-        <label class="form-label">สถานะ</label>
-        <select id="status" class="form">
-          <option value="todo">Todo</option>
-          <option value="in_progress">In Progress</option>
-          <option value="done">Done</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label class="form-label">โปรเจกต์</label>
-        <select id="project_id" class="form">
-          <option value="">— เลือกโปรเจกต์ —</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label class="form-label">ผู้รับผิดชอบ</label>
-        <select id="assigned_user_id" class="form">
-          <option value="">— ไม่ระบุ —</option>
-        </select>
+    <section class="form-card">
+      <div class="section-label">ลงทะเบียนผู้ใช้เข้ากิจกรรม</div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label class="form-label">กิจกรรม</label>
+          <select id="event_id" class="form">
+            <option value="">-- เลือกกิจกรรม --</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label">ผู้ใช้</label>
+          <select id="user_id" class="form">
+            <option value="">-- เลือกผู้ใช้ --</option>
+          </select>
+        </div>
       </div>
 
       <div id="message" class="message"></div>
 
       <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:8px;">
-        <button onclick="cancelEdit()" class="button button-secondary" id="cancel-btn" style="display:none;">ยกเลิก</button>
-        <button onclick="submitData()" class="button button-primary" id="submit-btn">+ สร้างงาน</button>
+        <button onclick="submitData()" class="button button-primary">+ ลงทะเบียน</button>
       </div>
-    </div>
+    </section>
 
-    <div class="section-label">รายการงาน</div>
-    <div id="tasks"></div>
-  </div>
+    <section>
+      <div class="section-label">กิจกรรมและรายชื่อผู้เข้าร่วม</div>
+      <div id="tasks"></div>
+    </section>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   <script src="../../js/api.js"></script>
+  <script src="../../js/ui.js"></script>
   <script src="./index.js"></script>
 </body>
 </html>

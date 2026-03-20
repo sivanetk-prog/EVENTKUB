@@ -1,16 +1,15 @@
-version: '3.7'
-
 services:
   db:
     image: mysql:8.4
-    container_name: mysql_db
+    container_name: event_db
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: webdb
+      MYSQL_DATABASE: event_db
     ports:
-      - "8820:3306"
+      - "3300:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ../database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
     networks:
       - weblab820
 
@@ -23,7 +22,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD: root
     ports:
-      - "8821:80"
+      - "8080:80"
     depends_on:
       - db
     networks:

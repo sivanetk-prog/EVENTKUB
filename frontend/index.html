@@ -3,38 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Task Management</title>
+  <title>ระบบจัดการกิจกรรม</title>
   <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
   <nav>
     <a href="./index.html" class="active">หน้าแรก</a>
     <a href="./pages/users/">ผู้ใช้</a>
-    <a href="./pages/projects/">โปรเจกต์</a>
-    <a href="./pages/tasks/">งาน</a>
+    <a href="./pages/projects/">กิจกรรม</a>
+    <a href="./pages/tasks/">ลงทะเบียน</a>
   </nav>
 
-  <div class="hero">
-    <div class="hero-title">Task Management</div>
-    <div class="hero-sub">ระบบจัดการงานสำหรับทีม</div>
+  <main class="hero">
+    <section class="hero-panel">
+      <div class="eyebrow">EventKUB</div>
+      <h1 class="hero-title">EventKUB ที่สร้างกิจกรรมได้ง่าย  </h1>
+      <p class="hero-sub">สร้างกิจกรรม กำหนดจำนวนที่รับ และดูผู้ลงทะเบียนทั้งหมด</p>
+    </section>
 
-    <div class="hero-cards">
+    <section class="hero-cards">
       <a href="./pages/users/" class="hero-card">
-        <div class="hero-card-icon">👤</div>
+        
         <div class="hero-card-label">จัดการผู้ใช้</div>
-        <div class="hero-card-desc">เพิ่ม ดู แก้ไขข้อมูลสมาชิก</div>
+        <div class="hero-card-desc">เพิ่ม แก้ไข และเตรียมรายชื่อผู้ใช้สำหรับลงทะเบียนเข้าร่วมกิจกรรม</div>
       </a>
       <a href="./pages/projects/" class="hero-card">
-        <div class="hero-card-icon">📁</div>
-        <div class="hero-card-label">จัดการโปรเจกต์</div>
-        <div class="hero-card-desc">สร้างและติดตามโปรเจกต์</div>
+        
+        <div class="hero-card-label">จัดการกิจกรรม</div>
+        <div class="hero-card-desc">สร้างกิจกรรม ระบุวัน สถานที่ และจำนวนที่รับได้ในหน้าจอเดียว</div>
       </a>
       <a href="./pages/tasks/" class="hero-card">
-        <div class="hero-card-icon">✅</div>
-        <div class="hero-card-label">จัดการงาน</div>
-        <div class="hero-card-desc">มอบหมายและติดตามงาน</div>
+        
+        <div class="hero-card-label">ลงทะเบียน</div>
+        <div class="hero-card-desc">ให้ผู้ใช้ลงทะเบียนและตรวจสอบรายชื่อผู้เข้าร่วมแต่ละกิจกรรมได้ทันที</div>
       </a>
-    </div>
-  </div>
+    </section>
+
+    <section class="stats-strip">
+      <div class="stat-item">
+        <div class="stat-label">Workflow</div>
+        <div class="stat-value">3</div>
+        <div class="stat-caption">ผู้ใช้ กิจกรรม และการลงทะเบียนครบในระบบเดียว</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Interface</div>
+        <div class="stat-value">Clean</div>
+        <div class="stat-caption">โทนขาวโปร่ง เรียบแบบเว็บสมัยใหม่ ใช้งานง่ายทุกหน้า</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Style</div>
+        <div class="stat-value">Minimal</div>
+        <div class="stat-caption">โครงสร้างชัด อ่านสบาย และคงความเป็นระบบจัดการจริง</div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

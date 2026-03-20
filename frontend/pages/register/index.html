@@ -10,62 +10,70 @@
   <nav>
     <a href="../../index.html">หน้าแรก</a>
     <a href="../users/">ผู้ใช้</a>
-    <a href="../projects/">โปรเจกต์</a>
-    <a href="../tasks/">งาน</a>
+    <a href="../projects/">กิจกรรม</a>
+    <a href="../tasks/">ลงทะเบียน</a>
   </nav>
 
-  <div class="container">
-    <div class="page-header">
-      <div class="page-title">เพิ่มผู้ใช้ใหม่</div>
+  <main class="container">
+    <section class="page-header">
+      <div class="page-intro">
+        <h1 class="page-title">เพิ่มผู้ใช้ใหม่</h1>
+        <p class="page-subtitle">กรอกข้อมูลผู้ใช้ให้ครบ เพื่อใช้สำหรับลงทะเบียนเข้าร่วมกิจกรรมต่าง ๆ</p>
+      </div>
       <a href="../users/">
-        <button class="button button-secondary">← กลับ</button>
+        <button class="button button-secondary">กลับ</button>
       </a>
-    </div>
+    </section>
 
-    <div class="form-card">
-      <div class="form-row">
-        <label class="form-label">ชื่อจริง</label>
-        <input class="form" name="firstname" type="text" placeholder="ชื่อจริง">
-      </div>
-      <div class="form-row">
-        <label class="form-label">นามสกุล</label>
-        <input class="form" name="lastname" type="text" placeholder="นามสกุล">
-      </div>
-      <div class="form-row">
-        <label class="form-label">อายุ</label>
-        <input class="form" name="age" type="number" min="0" max="100" placeholder="อายุ">
-      </div>
+    <section class="glass-banner">
+      <div class="glass-banner-title">New User Profile</div>
+      <div class="glass-banner-text">ข้อมูลนี้จะถูกใช้ในหน้าผู้ใช้ หน้ากิจกรรม และหน้าลงทะเบียนทั้งหมด</div>
+    </section>
 
-      <div class="form-row">
-        <label class="form-label">เพศ</label>
-        <div class="radio-group">
-          <label><input name="gender" type="radio" value="ชาย"> ชาย</label>
-          <label><input name="gender" type="radio" value="หญิง"> หญิง</label>
-          <label><input name="gender" type="radio" value="ไม่ระบุ"> ไม่ระบุ</label>
+    <section class="form-card">
+      <div class="form-grid">
+        <div class="form-row">
+          <label class="form-label">ชื่อจริง</label>
+          <input class="form" name="firstname" type="text" placeholder="ชื่อจริง">
         </div>
-      </div>
-
-      <div class="form-row">
-        <label class="form-label">สิ่งที่สนใจ</label>
-        <div class="checkbox-group">
-          <label><input name="interest" type="checkbox" value="หนังสือ"> หนังสือ</label>
-          <label><input name="interest" type="checkbox" value="วิดีโอเกม"> วิดีโอเกม</label>
-          <label><input name="interest" type="checkbox" value="การเมือง"> การเมือง</label>
+        <div class="form-row">
+          <label class="form-label">นามสกุล</label>
+          <input class="form" name="lastname" type="text" placeholder="นามสกุล">
         </div>
-      </div>
-
-      <div class="form-row">
-        <label class="form-label">คำอธิบายเพิ่มเติม</label>
-        <textarea name="description" placeholder="เล่าเกี่ยวกับตัวเองสักนิด..."></textarea>
+        <div class="form-row">
+          <label class="form-label">อายุ</label>
+          <input class="form" name="age" type="number" min="0" max="100" placeholder="อายุ">
+        </div>
+        <div class="form-row full">
+          <label class="form-label">เพศ</label>
+          <div class="radio-group">
+            <label><input name="gender" type="radio" value="ชาย"> ชาย</label>
+            <label><input name="gender" type="radio" value="หญิง"> หญิง</label>
+            <label><input name="gender" type="radio" value="ไม่ระบุ"> ไม่ระบุ</label>
+          </div>
+        </div>
+        <div class="form-row full">
+          <label class="form-label">สิ่งที่สนใจ</label>
+          <div class="checkbox-group">
+            <label><input name="interest" type="checkbox" value="หนังสือ"> หนังสือ</label>
+            <label><input name="interest" type="checkbox" value="เทคโนโลยี"> เทคโนโลยี</label>
+            <label><input name="interest" type="checkbox" value="กีฬา"> กีฬา</label>
+            <label><input name="interest" type="checkbox" value="ดนตรี"> ดนตรี</label>
+          </div>
+        </div>
+        <div class="form-row full">
+          <label class="form-label">คำอธิบายเพิ่มเติม</label>
+          <textarea name="description" placeholder="เล่าเกี่ยวกับตัวเองสักนิด..."></textarea>
+        </div>
       </div>
 
       <div id="message" class="message"></div>
 
       <div style="display:flex; justify-content:flex-end; margin-top:8px;">
-        <button onclick="submitData()" class="button button-primary">ส่งข้อมูล</button>
+        <button onclick="submitData()" class="button button-primary">บันทึกข้อมูล</button>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   <script src="../../js/api.js"></script>

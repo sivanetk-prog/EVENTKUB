@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # web101 - Event Management System
 
 ระบบจัดการกิจกรรม/อีเวนต์แบบพื้นฐาน สร้างด้วย Node.js + Express + MySQL และหน้าเว็บ HTML/CSS/JS แบบตรงไปตรงมา
@@ -37,3 +38,6 @@ web101/
 - `GET /registrations`
 - `POST /registrations`
 - `DELETE /registrations/:id`
+=======
+# EVENTKUB
+>>>>>>> 3fed5a4079b58b6ac75322c14489fb7bf9b37c6e
